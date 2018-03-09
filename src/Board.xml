@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ldg.mybatis">
+	<select id="boardList" resultType="Board"
+	parameterType="hashmap">
+	select * from board
+	<if test="num != null">
+		WHERE num = #{num}
+	</if>
+	<if test="boardid != null">
+		WHERE boardid = #{boardid}
+	</if>
+	</select>
+</mapper>
