@@ -1,5 +1,5 @@
 package dao;
-
+//Connector 오브젝트를 만듬 제반을 셋팅.
 import java.io.IOException;
 import java.io.InputStream;
 

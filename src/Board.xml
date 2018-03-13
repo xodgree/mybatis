@@ -13,4 +13,22 @@
 		WHERE boardid = #{boardid}
 	</if>
 	</select>
+	
+	<select id="getArticleCount" resultType="int"
+	parameterType="hashmap">
+	select nvl(count(*),0) from board
+	<if test="boardid != null">
+		WHERE boardid = #{boardid}
+	</if>
+	</select>
+	
+	<select id="getArticles" resultType="Board"
+	parameterType="hashmap">
+	select * from 
+	( select rownum rnum ,a.*
+   from (select num,writer,email,subject,passwd,
+   reg_date,readcount,ref,re_step,re_level,content,
+   ip from board where boardid = #{boardid} order by ref desc , re_step)
+   a ) where rnum between #{startRow} and #{endRow}
+	</select>
 </mapper>
